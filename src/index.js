@@ -6,7 +6,7 @@ function getInput() {
 
     if (title) {
 
-        const url_base = 'http://www.omdbapi.com/?apikey=7035c60c';
+        const url_base = 'https://www.omdbapi.com/?apikey=7035c60c';
 
         const url = url_base + '&s=' + title;
         getData(url);
