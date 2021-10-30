@@ -4,11 +4,6 @@
 
 `Netlify`에서 배포해보려고 했으나 오류로인해 별도로 저장소를 생성해 진행
 
-> **ISSUE**
->
-> Netlify 설정 실패가 웹팩 세팅 실패인지 아니면 과정이 틀린건지
-> https://velog.io/@hanei100/Webpack-Netlify-%EB%B0%B0%ED%8F%AC
-
 <br>
 
 
