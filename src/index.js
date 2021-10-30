@@ -1,12 +1,56 @@
-import _ from 'lodash';
+console.log('working!');
 
-function component() {
-    const element = document.createElement('div');
+function getInput() {
 
-    // Lodash, currently included via a script, is required for this line to work
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+    const title = document.getElementById('search_bar').value;
 
-    return element;
+    if (title) {
+
+        const url_base = 'http://www.omdbapi.com/?apikey=7035c60c';
+
+        const url = url_base + '&s=' + title;
+        getData(url);
+    } else {
+        alert("invalid input!")
+    }
 }
 
-document.body.appendChild(component());
+function getData(url) {
+    //loading 관련
+    const loading = '<div id="load">Loading...</div>';
+    document.getElementById("result").innerHTML = loading;
+    //API 
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            document.getElementById("result").innerHTML = '';
+
+            if (data.Response == 'True') {
+                for(const movie of data.Search){
+                    document.getElementById("result").innerHTML += (
+                        '<p>' + movie.Title + '</p>'
+                        + '<img class="poster" src=' + movie.Poster + ' alt="[No Poster for this Movie...]" />'
+                        +'<br>');
+                }
+            } else {
+                alert("error:" + data.Error);
+            }
+        })
+        .then(() => {
+            const io = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                  if(entry.isIntersecting){
+                    entry.target.classList.add('visible');
+                  } else {
+                    entry.target.classList.remove('visible');
+                  }
+                });                            
+              });
+              
+              document.querySelectorAll('.poster').forEach((poster) => io.observe(poster));
+
+        })
+        .catch((error) => alert('error:' + error));
+}
+
+window.getInput = getInput;
