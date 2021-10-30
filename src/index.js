@@ -25,9 +25,11 @@ function getData(url) {
 
             if (data.Response == 'True') {
                 for(const movie of data.Search){
+
+                    const poster = String(movie.Poster).replace('SX300','SX500');
                     document.getElementById("result").innerHTML += (
                         '<p>' + movie.Title + '</p>'
-                        + '<img class="poster" src=' + movie.Poster + ' alt="[No Poster for this Movie...]" />'
+                        + '<img class="poster" src=' + poster + ' alt="[No Poster for this Movie...]" />'
                         +'<br>');
                 }
             } else {
