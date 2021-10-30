@@ -1,12 +1,10 @@
-console.log('working!');
-
 function getInput() {
 
-    const title = document.getElementById('search_bar').value;
+  const title = document.getElementById('search_bar').value;
 
     if (title) {
 
-        const url_base = 'https://www.omdbapi.com/?apikey=7035c60c';
+        const url_base = 'https://www.omdbapi.com/?apikey='+API_KEY;
 
         const url = url_base + '&s=' + title;
         getData(url);
@@ -54,3 +52,5 @@ function getData(url) {
 }
 
 window.getInput = getInput;
+
+

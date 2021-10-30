@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/trollering12312/JS-Mission1_publish#readme",
   "devDependencies": {
+    "dotenv": "^10.0.0",
     "webpack": "^5.61.0",
     "webpack-cli": "^4.9.1"
   }
